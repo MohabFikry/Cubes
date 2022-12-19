@@ -1,36 +1,35 @@
-class View {
-  _parentElemnt = document.querySelector(".product-data");
+export default class View {
   _data;
+  _fullData;
 
-  addHandlerCalculateTotal(handler) {
-    ["change", "keyup", "focusout"].forEach((ev) => {
-      this._parentElemnt.addEventListener(ev, function () {
-        handler();
-      });
+  recordsMessage(invoices) {
+    const message = document.querySelector(".records-message");
+    const pagination = document.querySelector(".list-pagination");
+    if (invoices.length > 0) {
+      message.style.display = "none";
+      pagination.style.display = "flex";
+    } else {
+      message.style.display = "flex";
+      pagination.style.display = "none";
+    }
+  }
+
+  render(data) {
+    this._data = data;
+    const markup = this._generateMarkup();
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  renderRows(arr) {
+    this._fullData = arr;
+    arr.forEach((product) => {
+      this.render(product);
     });
   }
 
-  addHandlerGetData(handler) {
-    this._parentElemnt.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const dataArr = [...new FormData(this)];
-      const data = Object.fromEntries(dataArr);
-      handler(data);
-      document.querySelectorAll(".clear").forEach((el) => (el.value = ""));
-      const scroll = document.querySelector(".table-container .container");
-      scroll.scrollTo({
-        left: 0,
-        top: scroll.scrollHeight,
-        behavior: "smooth",
-      });
-    });
-  }
-
-  addHandlerGetDataStorage(handler) {
-    window.addEventListener("load", function () {
-      handler();
-    });
+  renderReset() {
+    const markup = this._generateMarkupHeaders();
+    this._parentElement.innerHTML = "";
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 }
-
-export default new View();

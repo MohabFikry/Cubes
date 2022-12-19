@@ -1,5 +1,15 @@
 export const state = {
   invoices: [],
+  results: [],
+  page: 1,
+};
+
+export const getInvoicesPerPage = function (page = state.page, perPage) {
+  state.totalPages = Math.ceil(state.invoices.length / +perPage);
+  state.page = page;
+  const start = (page - 1) * perPage;
+  const end = page * perPage;
+  return state.invoices.slice(start, end);
 };
 
 export const getData = function (data) {
@@ -40,4 +50,17 @@ export const deleteCurrentRecord = function (currentRecord) {
   setStorage();
 };
 
-export const updateRecord = function (currentRecord) {};
+const searchField = document.querySelector(".search-field");
+
+export const searchName = function () {
+  const query = searchField.value.toLowerCase();
+  state.results = state.invoices.filter((product) =>
+    product.productName.toLowerCase().includes(query)
+  );
+};
+export const searchCategory = function () {
+  const query = searchField.value.toLowerCase();
+  state.results = state.invoices.filter((product) =>
+    product.productCategory.toLowerCase().includes(query)
+  );
+};

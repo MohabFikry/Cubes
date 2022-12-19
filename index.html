@@ -1,137 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cubes</title>
+    <link rel="shortcut icon" href="src/img/cubes.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./src/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cairo:wght@200;300;500;600;700;800;900&family=Dosis:wght@200;300;400;500;600;700;800&family=Hind:wght@300;400;500;600;700&family=Jomhuria&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,500;1,600&family=Open+Sans:wght@400;700&family=Oxygen:wght@300;400;700&family=PT+Sans+Narrow:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/all.min.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cubes</title>
-  <link rel="shortcut icon" href="src/img/cubes.png" type="image/x-icon" />
-  <link rel="stylesheet" href="./src/style.css">
-  <link rel="stylesheet" href="./src/normalize.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cairo:wght@200;300;500;600;700;800;900&family=Dosis:wght@200;300;400;500;600;700;800&family=Hind:wght@300;400;500;600;700&family=Jomhuria&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,500;1,600&family=Open+Sans:wght@400;700&family=Oxygen:wght@300;400;700&family=PT+Sans+Narrow:wght@400;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./src/all.min.css">
-</head>
-
-<body>
-  <div class="dark-layout">
-    <div class="dark-animation dark-hide"></div>
-  </div>
-  <nav class="navigator">
-    <div class="logo">
-      <img src="./src/img/cubes.png" alt="logo">
-      <span class="company-name">Cubes.</span>
+  <body>
+    <div class="dark-layout">
+      <div class="dark-animation dark-hide"></div>
     </div>
-    <div class="search">
-      <input type="search" placeholder="Search products">
-      <button class="btn-search by-title">Name</button>
-      <button class="btn-search by-category">Category</button>
-    </div>
-  </nav>
-  <div class="app-container">
-    <div class="main-product middle">
-      <div class="product-data-header">
-        <h4>Enter Your Invoice Data</h4>
-        <i class="fa-solid fa-file-invoice-dollar"></i>
-        <!-- <img src="./src/img/invoice (2).png" alt="invoice"> -->
+    <nav class="navigator">
+      <div class="logo">
+        <img src="./src/img/cubes.png" alt="logo" />
+        <span class="company-name">Cubes.</span>
       </div>
-      <form action="" class="product-data">
-        <input name="productInvoice" required min="0" type="text" class="product-invoice three-row clear"
-          placeholder="#invoice">
-        <input name="productName" required min="0" type="text" class="product-title clear" placeholder="Product Name">
-        <input name="productCategory" required min="0" type="text" class="product-category three-row clear"
-          placeholder="Category">
-        <input name="productPrice" step="any" required min="0" type="number" class="product-price three-row clear"
-          placeholder="Price">
-        <input name="productTaxes" step="any" required min="0" type="number" class="product-taxes three-row clear"
-          placeholder="Taxes%">
-        <input name="productQuantity" step="any" required min="1" type="number" class="product-quantity three-row clear"
-          placeholder="Quantity">
-        <input name="productDiscount" step="any" required min="0" type="number" class="product-discount three-row clear"
-          placeholder="Discount">
-        <input name="productDis" required min="0" type="number" class="product-dis three-row clear" readonly
-          placeholder="Discount%">
-        <select name="productStatus" required id="" class="product-status three-row clear">
-          <option value="">-select status-</option>
-          <option value="Paid">Paid</option>
-          <option value="Credit">Credit</option>
-        </select>
-        <input name="productTotal" required min="0" type="number" class="product-total three-row clear"
-          placeholder="Total" readonly>
-        <button class="btn-save-product three-row">Submit</button>
-      </form>
-    </div>
-    <div class="product-list middle">
-      <div class="product-data-header">
-        <h4>Invoice List</h4>
-        <i class="fa-sharp fa-solid fa-list-ol"></i>
-        <!-- <img class="png" src="./src/img/check-list.png" alt="invoice"> -->
+    </nav>
+    <div class="app-container">
+      <div class="main-product middle">
+        <div class="product-data-header">
+          <h4>Enter Your Invoice Data</h4>
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <!-- <img src="./src/img/invoice (2).png" alt="invoice"> -->
+        </div>
+        <form action="" class="product-data">
+          <input
+            name="productInvoice"
+            required
+            min="0"
+            type="text"
+            class="product-invoice three-row clear"
+            placeholder="#invoice"
+          />
+          <input
+            name="productName"
+            required
+            min="0"
+            type="text"
+            class="product-title clear"
+            placeholder="Product Name"
+          />
+          <input
+            name="productCategory"
+            required
+            min="0"
+            type="text"
+            class="product-category three-row clear"
+            placeholder="Category"
+          />
+          <input
+            name="productPrice"
+            step="any"
+            required
+            min="0"
+            type="number"
+            class="product-price three-row clear"
+            placeholder="Price"
+          />
+          <input
+            name="productTaxes"
+            step="any"
+            required
+            min="0"
+            type="number"
+            class="product-taxes three-row clear"
+            placeholder="Taxes%"
+          />
+          <input
+            name="productQuantity"
+            step="any"
+            required
+            min="1"
+            type="number"
+            class="product-quantity three-row clear"
+            placeholder="Quantity"
+          />
+          <input
+            name="productDiscount"
+            step="any"
+            required
+            min="0"
+            type="number"
+            class="product-discount three-row clear"
+            placeholder="Discount"
+          />
+          <input
+            name="productDis"
+            required
+            min="0"
+            type="number"
+            class="product-dis three-row clear"
+            readonly
+            placeholder="Discount%"
+          />
+          <select
+            name="productStatus"
+            required
+            id=""
+            class="product-status three-row clear"
+          >
+            <option value="">-select status-</option>
+            <option value="Paid">Paid</option>
+            <option value="Credit">Credit</option>
+          </select>
+          <input
+            name="productTotal"
+            required
+            min="0"
+            type="number"
+            class="product-total three-row clear"
+            placeholder="Total"
+            readonly
+          />
+          <button class="btn-save-product three-row">Submit</button>
+        </form>
       </div>
-      <div class="data-list">
-        <div class="table-container">
-          <div class="delete-all">
-            <div class="delete-invoice-container half">
-              <input type="text" class="delete-invoice half" placeholder="#invoice">
-              <button class="btn-delete-invoice half">Dletete Invoice</button>
+      <div class="product-list middle">
+        <div class="product-data-header">
+          <h4>Invoice List</h4>
+          <i class="fa-sharp fa-solid fa-list-ol"></i>
+          <!-- <img class="png" src="./src/img/check-list.png" alt="invoice"> -->
+        </div>
+        <div class="data-list">
+          <div class="table-container">
+            <!-- search and delete functionality elements  -->
+            <div class="delete-all">
+              <div class="search">
+                <div class="select-page">
+                  <select name="number-per-page" id="" class="number-per-page">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="100">100</option>
+                  </select>
+                </div>
+                <input
+                  class="search-field"
+                  type="search"
+                  placeholder="Search products"
+                />
+                <button class="btn-search by-title">Name</button>
+                <button class="btn-search by-category">Category</button>
+                <div class="clear-container hidden">
+                  <img
+                    class="btn-clear"
+                    src="./src/img/clear-filter.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <!-- ------ -->
+              <div class="delete-container">
+                <div class="delete-invoice-container">
+                  <input
+                    type="text"
+                    class="delete-invoice"
+                    placeholder="#invoice"
+                  />
+                  <button class="btn-delete-invoice">Dletete Invoice</button>
+                </div>
+                <!-- ------- -->
+                <button class="btn-delete-all">
+                  Delete All (<span class="btn-count">0</span>)
+                </button>
+              </div>
             </div>
-            <button class="btn-delete-all three-row">Delete All (<span class="btn-count">0</span>)</button>
+            <!-- search and delete end  -->
+            <div class="container">
+              <table class="data-table">
+                <tr>
+                  <th>#</th>
+                  <th>Invoice</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Qty.</th>
+                  <th>Price</th>
+                  <th>Taxes</th>
+                  <th>Discount</th>
+                  <th>%</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Update</th>
+                  <th>Copy</th>
+                  <th>Delete</th>
+                </tr>
+              </table>
+              <h6 class="records-message">No records yet!</h6>
+            </div>
           </div>
-          <div class="container">
-            <table class="data-table">
-              <tr>
-                <th>#</th>
-                <th>Invoice</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Qty.</th>
-                <th>Price</th>
-                <th>Taxes</th>
-                <th>Discount</th>
-                <th>%</th>
-                <th>Total</th>
-                <th>Status</th>
-                <th>Update</th>
-                <th>Copy</th>
-                <th>Delete</th>
-              </tr>
-            </table>
-            <h6 class="records-message">No records yet!</h6>
+          <div class="list-pagination">
+            <i
+              class="fa-sharp fa-solid fa-square-caret-left left"
+              data-go=""
+            ></i>
+            <!-- <img class="btn-page-back" src="./src/img/left-chevron.png" alt=""> -->
+            <span class="current-page">1</span>
+            <span class="of">of</span>
+            <span class="total-pages">1</span>
+            <i
+              class="fa-sharp fa-solid fa-square-caret-right right"
+              data-go=""
+            ></i>
+            <!-- <img class="btn-page-forward" src="./src/img/right-chevron.png" alt=""> -->
           </div>
         </div>
-        <div class="list-pagination">
-          <i class="fa-sharp fa-solid fa-square-chevron-left btn-page-back"></i>
-          <!-- <img class="btn-page-back" src="./src/img/left-chevron.png" alt=""> -->
-          <span class="current-page">1</span>
-          <span class="of">of</span>
-          <span class="total-pages">1</span>
-          <i class="fa-sharp fa-solid fa-square-chevron-right btn-page-forward"></i>
-          <!-- <img class="btn-page-forward" src="./src/img/right-chevron.png" alt=""> -->
+      </div>
+      <div class="confirm-message hidden">
+        <div class="close-hide overlay"></div>
+        <div class="modal">
+          <div class="modal-close-sign">
+            <span>Confirm Action</span><span class="close-hide x">x</span>
+          </div>
+          <p class="modal-message">
+            Are you sure you want to delete all records?
+          </p>
+          <button class="close-hide btn-modal-cancel">Cancel</button>
+          <button class="btn-modal-ok">Delete</button>
         </div>
       </div>
     </div>
-    <div class="confirm-message hidden">
-      <div class="overlay"></div>
-      <div class="modal">
-        <div class="modal-close-sign"><span>Confirm Action</span><span class="x">x</span></div>
-        <p class="modal-message">Are you sure you want to delete all records?</p>
-        <button class="btn-modal-cancel">Cancel</button>
-        <button class="btn-modal-ok">Delete</button>
+    <footer>
+      <div class="footer-left">
+        <p>Powered by <span> Cubes.</span> &copy; 2022 - v 1.0.0</p>
+        <img class="btn-toggle-mode" src="./src/img/night-mode.png" alt="" />
       </div>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-left">
-      <p>Copyrights reserved <span>Cubes.</span>&copy; 2022 - v 1.0.0</p>
-      <img class="btn-toggle-mode" src="./src/img/night-mode.png" alt="">
-    </div>
-    <p>Designed by <span> Mohab Fikry.</span></p>
-  </footer>
-  <script src="src/controller.js" type="module"></script>
-
-</body>
-
+      <p>Designed by <span> Mohab Fikry.</span></p>
+    </footer>
+    <script src="src/controller.js" type="module"></script>
+  </body>
 </html>

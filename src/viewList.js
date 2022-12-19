@@ -1,6 +1,49 @@
-class ViewList {
+import view from "./view.js";
+
+class ViewList extends view {
   _parentElement = document.querySelector(".data-table");
-  _data;
+
+  addHandlerModal(handler) {
+    const modal = document.querySelector(".confirm-message");
+    modal.addEventListener("click", function (e) {
+      if (e.target.classList.contains("close-hide")) {
+        modal.classList.add("hidden");
+      }
+      if (e.target.classList.contains("btn-modal-ok")) {
+        handler();
+        modal.classList.add("hidden");
+      } else {
+        return;
+      }
+    });
+  }
+
+  addHandlerClearBtn(handler) {
+    const newParentElement = document.querySelector(".data-list");
+    newParentElement.addEventListener("click", function (e) {
+      const btn = e.target.closest(".clear-container");
+      if (!btn) return;
+      handler();
+      document.querySelector(".clear-container").classList.add("hidden");
+      document.querySelector(".search-field").value = "";
+    });
+  }
+
+  addHandlerSearch(handlerName, handelrCaregory) {
+    const searchParent = document.querySelector(".search");
+    searchParent.addEventListener("click", function (e) {
+      if (e.target.classList.contains("by-title")) {
+        handlerName();
+        document.querySelector(".clear-container").classList.remove("hidden");
+      }
+      if (e.target.classList.contains("by-category")) {
+        handelrCaregory();
+        document.querySelector(".clear-container").classList.remove("hidden");
+      } else {
+        return;
+      }
+    });
+  }
 
   addHandlerEditRecord(handler, type) {
     this._parentElement.addEventListener("click", function (e) {
@@ -11,12 +54,13 @@ class ViewList {
     });
   }
 
-  addHandlerDeleteAll(handler) {
+  addHandlerDeleteAll() {
     const newParentElement = document.querySelector(".data-list");
+    const modal = document.querySelector(".confirm-message");
     newParentElement.addEventListener("click", function (e) {
       const btn = e.target.closest(".btn-delete-all");
       if (!btn) return;
-      handler();
+      modal.classList.remove("hidden");
     });
   }
 
@@ -28,18 +72,6 @@ class ViewList {
       const invoice = document.querySelector(".delete-invoice").value;
       handler(invoice);
     });
-  }
-
-  recordsMessage(invoices) {
-    const message = document.querySelector(".records-message");
-    const pagination = document.querySelector(".list-pagination");
-    if (invoices.length > 0) {
-      message.style.display = "none";
-      pagination.style.display = "flex";
-    } else {
-      message.style.display = "flex";
-      pagination.style.display = "none";
-    }
   }
 
   _generateMarkup() {
@@ -56,23 +88,11 @@ class ViewList {
         <td>${this._data.productDis}%</td>
         <td>${this._data.productTotal}</td>
         <td>${this._data.productStatus}</td>
-        <td><button class="item-update" data-current-record=${this._data.sn}>Update</button></td>
+        <td><button class="item-update" data-current-record=${this._data.sn}>Edit</button></td>
         <td><button class="item-copy" data-current-record=${this._data.sn}>Copy</button></td>
         <td><button class="item-delete" data-current-record=${this._data.sn}>Delete</button></td>
       </tr>
     `;
-  }
-
-  render(data) {
-    this._data = data;
-    const markup = this._generateMarkup();
-    this._parentElement.insertAdjacentHTML("beforeend", markup);
-  }
-
-  renderRows(arr) {
-    arr.forEach((product) => {
-      this.render(product);
-    });
   }
 
   _generateMarkupHeaders() {
@@ -89,17 +109,11 @@ class ViewList {
         <th>%</th>
         <th>Total</th>
         <th>Status</th>
-        <th>Update</th>
+        <th>Edit</th>
         <th>Copy</th>
         <th>Delete</th>
       </tr>
     `;
-  }
-
-  renderReset() {
-    const markup = this._generateMarkupHeaders();
-    this._parentElement.innerHTML = "";
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 }
 
